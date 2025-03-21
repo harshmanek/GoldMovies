@@ -1,0 +1,36 @@
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+}
+
+.search-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.search-input {
+    background-color: #2b2b2b !important;
+    border-color: #444 !important;
+    color: white !important;
+}
+
+.search-input:focus {
+    background-color: #333 !important;
+    border-color: gold !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25) !important;
+    color: white !important;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.btn-outline-light:hover {
+    background-color: gold;
+    border-color: gold;
+    color: black;
+}

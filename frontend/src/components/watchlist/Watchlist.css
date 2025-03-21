@@ -1,0 +1,68 @@
+.watchlist-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #000;
+    min-height: 100vh;
+}
+
+.watchlist-card {
+    background-color: #000;
+    border: 1px solid #333;
+    width: 250px;  /* Fixed width for consistent card size */
+    margin: auto;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.watchlist-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    border-color: gold;
+}
+
+.watchlist-poster-container {
+    width: 100%;
+    height: 375px;  /* Fixed height for 3:2 aspect ratio */
+}
+
+.watchlist-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.watchlist-title {
+    color:  rgb(0, 0, 0);
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.g-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.back-button {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: gold;
+}

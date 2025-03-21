@@ -1,0 +1,37 @@
+.review-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.star {
+    color: #ffc107;
+    margin-right: 2px;
+}
+
+.review-text {
+    color: white;
+    margin: 10px 0;
+}
+
+.review-divider {
+    border-color: #333;
+    margin: 15px 0;
+}
+
+.rating-number {
+    color: white;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.back-button {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: gold;
+}

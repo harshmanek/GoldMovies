@@ -1,0 +1,16 @@
+.home-container {
+    min-height: 100vh;
+    background-color: #000;
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-container {
+        padding: 0 5px;
+    }
+}

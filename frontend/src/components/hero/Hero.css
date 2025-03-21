@@ -1,0 +1,189 @@
+.movie-carousel-container{
+    width: 100vw;
+    background-color: black;
+}
+.movie-poster{
+    height: 300px;
+    border: 1px solid gold;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.movie-poster > img{
+    height: 100%;
+    width: 100%;
+
+}
+.movie-card-container{
+    height: 550px;
+    background-color: black;
+}
+.movie-card{
+    background-repeat: no-repeat;
+    width:100%;
+    height: 100%;
+    background-size: cover;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), var(--img);
+}
+.movie-detail{
+    position: absolute;
+    top:200px;
+    display: flex;
+    justify-content: space-evenly;
+    width:100%;
+}
+.movie-title{
+    color:white;
+    display: flex;
+    align-items: center;
+}
+
+.movie-buttons-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:300px;
+}
+
+.play-button-icon-container{
+    padding:0px;
+    margin:0px;
+    width:150px;
+}
+.play-button-icon{
+    padding:0px;
+    margin:0px;
+    color:gold;
+    font-size: 3rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.play-button-icon:hover{
+    font-size: 4rem;
+    color:white;
+}
+
+.carousel-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    cursor: pointer;
+}
+
+.carousel-nav-button:hover .nav-icon {
+    color: gold;
+}
+
+.nav-icon {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.carousel-nav-button.MuiIconButton-root {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    padding: 1rem;
+}
+
+/* Position the buttons on the sides */
+.MuiIconButton-root.MuiIconButton-sizeMedium.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+    margin: 0 10px;
+}
+
+/* Ensure buttons are always visible */
+.css-1m9128y {
+    display: block !important;
+}
+
+@media only screen and (max-width: 800px) {
+    .movie-detail{
+        flex-direction: column;
+        align-items: center;
+        top:20px;
+    }
+}
+
+.movie-grid-section {
+    padding: 4rem 0;
+    background-color: #000;
+}
+
+.movie-grid-card {
+    background-color: #000;  /* Changed to black */
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.movie-grid-card:hover {
+    transform: scale(1.05);
+    border-color: gold;
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.2);
+}
+
+.movie-grid-poster {
+    height: 400px;
+    object-fit: cover;
+    border-bottom: 1px solid #333;
+}
+
+.movie-grid-title {
+    color: gold;  /* Changed to gold for better visibility */
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.movie-grid-card .btn-outline-light {
+    transition: all 0.3s ease;
+    border-color: gold;  /* Changed border color */
+    color: gold;  /* Changed text color */
+}
+
+.movie-grid-card .btn-outline-light:hover {
+    background-color: gold;
+    border-color: gold;
+    color: black;
+}
+
+.movie-grid-card .card-body {
+    background-color: #000;  /* Ensure card body is also black */
+    padding: 1rem;
+}
+
+.card-img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.play-button-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-img-container:hover .play-button-overlay {
+    opacity: 1;
+}
+
+.play-button-icon {
+    color: gold;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.play-button-overlay:hover .play-button-icon {
+    transform: scale(1.2);
+}
