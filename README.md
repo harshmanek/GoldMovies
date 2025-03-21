@@ -2,9 +2,6 @@
 
 GoldMovies is a modern web application for streaming trailers of different movies. With a sleek and user-friendly interface, it allows users to explore, search, and watch trailers of their favorite movies. Built with a React frontend and a Spring Boot backend, GoldMovies delivers a seamless and responsive experience.
 
-![GoldMovies Banner](https://via.placeholder.com/1200x400?text=GoldMovies+Streaming+Trailers)  
-_(Replace the above placeholder with your project banner image)_
-
 ---
 
 ## ✨ Features
