@@ -48,7 +48,10 @@ public class Review {
         this.rating = rating;
         this.username = username;
     }
-
-    // Existing getters and setters
-    // ...
+    public String getId() {
+        if (this.id != null) {
+            return this.id.toHexString();
+        }
+        return null;
+    }
 }

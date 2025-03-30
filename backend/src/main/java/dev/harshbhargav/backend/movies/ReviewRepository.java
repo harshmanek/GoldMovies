@@ -10,4 +10,6 @@ import java.util.List;
 public interface ReviewRepository extends MongoRepository<Review, ObjectId> {
     // Add a method to find reviews by imdbId
     List<Review> findByImdbId(String imdbId);
+
+    List<Review> findByUsername(String username);
 }
