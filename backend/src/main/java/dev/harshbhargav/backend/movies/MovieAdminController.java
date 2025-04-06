@@ -17,6 +17,7 @@ public class MovieAdminController {
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
+        System.out.println("Admin tried to add a movie");
         Movie newMovie = movieService.addMovie(movie);
         return new ResponseEntity<>(newMovie, HttpStatus.CREATED);
     }

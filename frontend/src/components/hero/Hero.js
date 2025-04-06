@@ -9,12 +9,10 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import { Container, Row, Col, Card } from "react-bootstrap";
 
 const Hero = ({ movies }) => {
   const navigate = useNavigate();
-
+  const moviesWithBackdrops = movies?.filter((movie) => movie?.backdrops?.[0]);
   function reviews(movieId) {
     navigate(`/Reviews/${movieId}`);
   }
@@ -27,7 +25,7 @@ const Hero = ({ movies }) => {
           animation="slide"
           NavButton={({ onClick, className, style, next, prev }) => {
             return (
-              <Button
+              <button
                 onClick={onClick}
                 className={`carousel-nav-button ${className}`}
                 style={{
@@ -38,15 +36,15 @@ const Hero = ({ movies }) => {
               >
                 <FontAwesomeIcon
                   icon={next ? faChevronRight : faChevronLeft}
-                  className="nav-icon"
+                  className="nav-icon text-white"
                   size="2x"
                 />
-              </Button>
+              </button>
             );
           }}
         >
-          {movies?.map((movie) => {
-            return movie?.backdrops?.[0] ? (
+          {moviesWithBackdrops?.map((movie) =>
+            movie?.backdrops?.[0] ? (
               <Paper key={movie.imdbId}>
                 <div className="movie-card-container">
                   <div
@@ -58,83 +56,86 @@ const Hero = ({ movies }) => {
                         <img src={movie.poster} alt={movie.title} />
                       </div>
                       <div className="movie-title">
-                        <h4>{movie.title}</h4>
+                        <h4 className="text-white text-xl font-semibold">
+                          {movie.title}
+                        </h4>
                       </div>
-                      <div className="movie-buttons-container">
+                      <div className="movie-buttons-container flex items-center gap-4 mt-2">
                         {movie.trailerLink && (
                           <Link
                             to={`/Trailer/${movie.trailerLink.substring(
                               movie.trailerLink.length - 11
                             )}`}
                           >
-                            <div className="play-button-icon-container">
+                            <div className="play-button-icon-container text-yellow-400">
                               <FontAwesomeIcon
                                 className="play-button-icon"
                                 icon={faCirclePlay}
+                                size="2x"
                               />
                             </div>
                           </Link>
                         )}
                         <div className="movie-review-button-container">
-                          <Button
-                            variant="info"
+                          <button
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-4 rounded"
                             onClick={() => reviews(movie.imdbId)}
                           >
                             Reviews
-                          </Button>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </Paper>
-            ) : null;
-          })}
+            ) : null
+          )}
         </Carousel>
       </div>
 
-      <Container className="movie-grid-section">
-        <Row xs={1} sm={2} md={4} className="g-4">
+      {/* Grid section using Tailwind */}
+      <div className="movie-grid-section max-w-screen-xl mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {movies?.map((movie) => (
-            <Col key={movie.imdbId}>
-              <Card className="movie-grid-card">
-                <div className="card-img-container position-relative">
-                  <Card.Img
-                    variant="top"
-                    src={movie.poster}
-                    alt={movie.title}
-                    className="movie-grid-poster"
+            <div
+              key={movie.imdbId}
+              className="bg-gray-800 rounded-lg shadow-md overflow-hidden"
+            >
+              <div className="relative">
+                <img
+                  src={movie.poster}
+                  alt={movie.title}
+                  className="w-full h-auto object-cover"
+                />
+                <Link
+                  to={`/Trailer/${movie.trailerLink.substring(
+                    movie.trailerLink.length - 11
+                  )}`}
+                  className="absolute inset-0 flex items-center justify-center hover:bg-black/40 transition duration-200"
+                >
+                  <FontAwesomeIcon
+                    icon={faCirclePlay}
+                    className="text-yellow-400"
+                    size="3x"
                   />
-                  <Link
-                    to={`/Trailer/${movie.trailerLink.substring(
-                      movie.trailerLink.length - 11
-                    )}`}
-                    className="play-button-overlay"
-                  >
-                    <FontAwesomeIcon
-                      className="play-button-icon"
-                      icon={faCirclePlay}
-                      size="3x"
-                    />
-                  </Link>
-                </div>
-                <Card.Body>
-                  <Card.Title className="movie-grid-title">
-                    {movie.title}
-                  </Card.Title>
-                  <Button
-                    variant="outline-light"
-                    onClick={() => reviews(movie.imdbId)}
-                    className="w-100"
-                  >
-                    Reviews
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
+                </Link>
+              </div>
+              <div className="p-4">
+                <h5 className="text-white font-semibold text-lg mb-2">
+                  {movie.title}
+                </h5>
+                <button
+                  className="w-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-semibold py-1 px-4 rounded transition"
+                  onClick={() => reviews(movie.imdbId)}
+                >
+                  Reviews
+                </button>
+              </div>
+            </div>
           ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     </>
   );
 };

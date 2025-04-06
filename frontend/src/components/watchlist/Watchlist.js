@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import api from "../../api/axiosConfig";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import "./Watchlist.css";
 
 const Watchlist = () => {
   const navigate = useNavigate();
@@ -24,41 +22,38 @@ const Watchlist = () => {
   };
 
   return (
-    <Container className="watchlist-container">
-      <Row>
-        <Col>
-          <div className="d-flex align-items-center mb-4">
-            <FontAwesomeIcon
-              icon={faArrowLeft}
-              className="back-button me-3"
-              onClick={() => navigate("/")}
-            />
-            <h2 className="text-white m-0">My Watched Movies</h2>
-          </div>
-        </Col>
-      </Row>
-      <Row className="g-4">
+    <div className="px-4 py-6 max-w-7xl mx-auto">
+      <div className="flex items-center mb-6">
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          className="text-white text-2xl mr-4 cursor-pointer"
+          onClick={() => navigate("/")}
+        />
+        <h2 className="text-white text-2xl font-semibold">My Watched Movies</h2>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {reviewedMovies.map((movie) => (
-          <Col key={movie.imdbId} xs={12} sm={6} md={3}>
-            <Card className="h-100 movie-card">
-              <div className="movie-poster-container">
-                <Card.Img
-                  variant="top"
-                  src={movie.poster}
-                  alt={movie.title}
-                  className="movie-poster"
-                />
-              </div>
-              <Card.Body className="d-flex flex-column">
-                <Card.Title className="text-center movie-title">
-                  {movie.title}
-                </Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
+          <div
+            key={movie.imdbId}
+            className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="w-full h-64 overflow-hidden">
+              <img
+                src={movie.poster}
+                alt={movie.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-4 flex justify-center">
+              <h3 className="text-white text-center text-lg font-medium">
+                {movie.title}
+              </h3>
+            </div>
+          </div>
         ))}
-      </Row>
-    </Container>
+      </div>
+    </div>
   );
 };
 

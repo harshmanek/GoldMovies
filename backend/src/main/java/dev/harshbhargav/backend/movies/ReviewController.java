@@ -51,6 +51,7 @@ public class ReviewController {
     @PostMapping
     @PreAuthorize("isAuthenticated() and (hasRole('USER') or hasRole('ADMIN'))")
     public ResponseEntity<Review> createReview(@RequestBody Map<String, String> payload) {
+        System.out.println("User tried to provde a review");
         try {
             String reviewBody = payload.get("reviewBody");
             String imdbId = payload.get("imdbId");
