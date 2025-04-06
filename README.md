@@ -77,7 +77,7 @@ Follow these steps to set up the project locally:
 
 4. **🌍 Access the Application**
    - Open your browser and navigate to `http://localhost:3000` to access the frontend.
-   - The backend API will be running at `http://localhost:8080`.
+   - The backend API will be running at `http://localhost:9090`.
 
 ---
 
