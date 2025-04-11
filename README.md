@@ -29,6 +29,14 @@ GoldMovies is a modern web application for streaming trailers of different movie
 
 ---
 
+### Screenshots
+- ![Screenshot (55)](https://github.com/user-attachments/assets/922328b9-df1e-469e-8ec2-775ca7490362)
+- ![Screenshot (57)](https://github.com/user-attachments/assets/f1b14d46-29a7-4cf6-8314-3a3cdbaa8e96)
+- ![Screenshot (59)](https://github.com/user-attachments/assets/3f54cb2e-327a-4a51-abc1-ae45eaf71cc2)
+- ![Screenshot (61)](https://github.com/user-attachments/assets/602edaa4-e08d-4fab-8c5d-b1464bfb0071)
+- ![Screenshot (60)](https://github.com/user-attachments/assets/6868da10-9c9e-49c6-81db-687de443ff29)
+
+
 ## 🚀 Getting Started
 
 Follow these steps to set up the project locally:
