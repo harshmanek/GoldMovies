@@ -36,7 +36,15 @@ public class AuthService {
 
         // Generate token
         String token = jwtUtil.generateToken(user);
-
+        // Return response
+        System.out.println("User registered successfully");
+        System.out.println("Token: " + token);
+        System.out.println("Username: " + user.getUsername());
+        System.out.println("Role: " + user.getRole());
+        System.out.println("User ID: " + user.getId());
+        System.out.println("User Email: " + user.getEmail());
+        System.out.println("User Password: " + user.getPassword());
+        System.out.println("User Enabled: " + user.isEnabled());
         return new AuthResponse(token, user.getUsername(), user.getRole());
     }
 
@@ -51,7 +59,15 @@ public class AuthService {
 
         // Generate token
         String token = jwtUtil.generateToken(user);
-
+        System.out.println("User logged in successfully");
+        System.out.println("Token: " + token);
+        System.out.println("Username: " + user.getUsername());
+        System.out.println("Role: " + user.getRole());
+        System.out.println("User ID: " + user.getId());
+        System.out.println("User Email: " + user.getEmail());
+        System.out.println("User Password: " + user.getPassword());
+        System.out.println("User Enabled: " + user.isEnabled());
+        // Return response
         return new AuthResponse(token, user.getUsername(), user.getRole());
     }
 }

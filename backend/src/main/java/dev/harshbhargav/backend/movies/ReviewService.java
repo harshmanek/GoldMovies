@@ -22,14 +22,19 @@ public class ReviewService {
     private MongoTemplate mongoTemplate;
 
     public List<Review> findAllReviews() {
+        System.out.println("findAllReviews");
         return reviewRepository.findAll();
     }
 
     public Optional<Review> findReviewById(String reviewId) {
         try {
-            return reviewRepository.findById(new ObjectId(reviewId));
+            // Convert the reviewId to ObjectId
+            Optional<Review> foundReview = reviewRepository.findById(new ObjectId(reviewId));
+            System.out.println("findReviewById: " + foundReview);
+            return foundReview;
         } catch (IllegalArgumentException e) {
             // Handle the case when reviewId is not a valid ObjectId
+            System.out.println("Invalid reviewId format: " + reviewId);
             return Optional.empty();
         }
     }
@@ -38,7 +43,9 @@ public class ReviewService {
         Movie movie = mongoTemplate.findOne(Query.query(Criteria.where("imdbId").is(imdbId)), Movie.class);
 
         if (movie != null && movie.getReviews() != null) {
-            return movie.getReviews();
+            List<Review> reviews = movie.getReviews();
+            System.out.println("findReviewsByImdbId: " + reviews);
+            return reviews;
         }
 
         return List.of();
@@ -71,7 +78,13 @@ public class ReviewService {
         Review savedReview = reviewRepository.insert(review);
 
         mongoTemplate.update(Movie.class).matching(Query.query(Criteria.where("imdbId").is(imdbId))).apply(new Update().push("reviews").value(savedReview)).first();
-
+        System.out.println("Review id: " + savedReview.getId());
+        System.out.println("Review body:" + savedReview.getBody());
+        System.out.println("Review rating: " + savedReview.getRating());
+        System.out.println("Review created by user: " + savedReview.getUsername());
+        System.out.println("Review created at: " + savedReview.getCreated());
+        System.out.println("Review updated at: " + savedReview.getUpdated());
+        System.out.println("Review created: " + savedReview.getImdbId());
         return savedReview;
     }
 
@@ -103,7 +116,7 @@ public class ReviewService {
 
             mongoTemplate.save(movie);
         }
-
+        System.out.println("Review updated: " + updatedReview);
         return updatedReview;
     }
 
@@ -120,5 +133,6 @@ public class ReviewService {
 
         // Delete the review
         reviewRepository.deleteById(new ObjectId(reviewId));
+        System.out.println("Review deleted: " + reviewId);
     }
 }

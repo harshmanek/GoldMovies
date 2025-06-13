@@ -42,6 +42,8 @@ public class MovieService {
         if (existingMovie.isPresent()) {
             throw new RuntimeException("Movie with IMDB ID " + movie.getImdbId() + " already exists");
         }
+        // Save the new movie
+        System.out.println(movie);
         return repository.save(movie);
     }
 
@@ -56,7 +58,7 @@ public class MovieService {
         existingMovie.setPoster(movie.getPoster());
         existingMovie.setBackdrops(movie.getBackdrops());
         existingMovie.setGenres(movie.getGenres());
-
+        System.out.println(existingMovie);
         return repository.save(existingMovie);
     }
 
@@ -64,5 +66,6 @@ public class MovieService {
         Movie movie = repository.findMovieByImdbId(imdbId)
                 .orElseThrow(() -> new RuntimeException("Movie not found"));
         repository.delete(movie);
+        System.out.println("Movie with IMDB ID " + imdbId + " deleted successfully");
     }
 }
